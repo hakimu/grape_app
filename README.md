@@ -1,7 +1,7 @@
 ### Grape app using the Ruby agent.
 
 ```
-bundle exec rackup
+bundle exec puma
 ```
 
 I've added the following to the `config.ru` to get around the issue with the Ruby agent and Puma 2.12.x.
