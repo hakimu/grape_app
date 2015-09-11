@@ -3,8 +3,7 @@ Bundler.require
 
 require './app'
 
-map '/baz' do
-	run Baz
-end
+require 'new_relic/rack/agent_hooks'
+use ::NewRelic::Rack::AgentHooks
 
-run Foo
+run Foo::API

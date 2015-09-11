@@ -1,16 +1,24 @@
 require 'json'
 
-class Baz < Grape::API
-	def self.call(env)
-		[200,{"Content-Type"=>"text/plain"},["hello"]]
+class Week
+	def self.all
+		['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 	end
 end
 
-class Foo < Grape::API
-	def self.call(env)
-		[200,{"Content-Type"=>"text/plain"},["world"]]
+module Foo
+	class API < Grape::API
+		version 'v1', using: :header, vendor: 'myself'
+		format :json
+		prefix :api
+
+		resource :days do
+			desc "Lists the days of the week"
+			get do
+				Week.all
+			end
+		end
 	end
 end
-
 
 
